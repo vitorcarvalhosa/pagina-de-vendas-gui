@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0A0A0A">
     <title>Método C.E.O. — Guilherme Zampoli | Vendas B2B com Previsibilidade</title>
     <meta name="description"
         content="Descubra como construir uma máquina previsível de novos clientes sem parecer um vendedor chato e sem depender da sorte do boca a boca.">
@@ -11,6 +12,15 @@
     <meta property="og:title" content="Método C.E.O. — Guilherme Zampoli">
     <meta property="og:description" content="Agenda cheia não depende de indicação.">
     <meta property="og:type" content="website">
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="css/style.css" as="style">
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
+    <link rel="dns-prefetch" href="https://wa.me">
+    <!-- Google Fonts preconnect + async load -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/style.css">
@@ -57,10 +67,16 @@
             </ul>
 
             <div class="video-wrapper">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/zpEmuRPJ1hQ" title="Método CEO — Guilherme Zampoli"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen loading="lazy"></iframe>
+                <div class="yt-facade" data-video-id="zpEmuRPJ1hQ" role="button"
+                    aria-label="Assistir ao vídeo do Método C.E.O." tabindex="0">
+                    <img src="https://i.ytimg.com/vi/zpEmuRPJ1hQ/hqdefault.jpg"
+                        alt="Thumbnail do vídeo: Método CEO — Guilherme Zampoli" loading="lazy" width="640" height="360"
+                        decoding="async">
+                    <div class="yt-play-btn" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
                 </div>
             </div>
 
@@ -88,8 +104,11 @@
 
             <div class="mockup-split">
                 <div class="split-img">
-                    <img src="images/mockup_tools_crm.png" alt="Ferramentas de prospecção: automação, CRM e scripts"
-                        class="mockup-img" loading="lazy" width="600" height="400">
+                    <picture>
+                        <source srcset="images/mockup_tools_crm.webp" type="image/webp">
+                        <img src="images/mockup_tools_crm.png" alt="Ferramentas de prospecção: automação, CRM e scripts"
+                            class="mockup-img" loading="lazy" width="600" height="400" decoding="async">
+                    </picture>
                 </div>
                 <div class="split-text">
                     <p>Ao entrar, você recebe acesso completo a ferramentas que <strong style="color:#fff">facilitam sua
@@ -283,8 +302,11 @@
         <div class="container">
             <div class="mockup-split" style="margin-bottom:4rem;">
                 <div class="split-img">
-                    <img src="images/mockup_course.png" alt="Curso Método CEO na plataforma" class="mockup-img"
-                        loading="lazy" width="600" height="400">
+                    <picture>
+                        <source srcset="images/mockup_course.webp" type="image/webp">
+                        <img src="images/mockup_course.png" alt="Curso Método CEO na plataforma" class="mockup-img"
+                            loading="lazy" width="600" height="400" decoding="async">
+                    </picture>
                 </div>
                 <div class="split-text">
                     <span class="badge">🎓 Conteúdo Completo</span>
@@ -446,8 +468,11 @@
 
             <div class="author-split">
                 <div class="author-img-wrap">
-                    <img src="images/mockup_author.png" alt="Guilherme Zampoli — Criador do Método C.E.O."
-                        loading="lazy" width="360" height="450">
+                    <picture>
+                        <source srcset="images/mockup_author.webp" type="image/webp">
+                        <img src="images/mockup_author.png" alt="Guilherme Zampoli — Criador do Método C.E.O."
+                            loading="lazy" width="360" height="450" decoding="async">
+                    </picture>
                 </div>
                 <div class="author-text">
                     <p>Meu nome é <strong style="color:#fff">Guilherme Zampoli</strong>. E antes de ensinar prospecção,
@@ -565,8 +590,11 @@
             </div>
 
             <div class="guarantee-split">
-                <img src="images/mockup_guarantee.png" alt="Garantia incondicional de 30 dias" class="guarantee-img"
-                    loading="lazy" width="220" height="220">
+                <picture>
+                    <source srcset="images/mockup_guarantee.webp" type="image/webp">
+                    <img src="images/mockup_guarantee.png" alt="Garantia incondicional de 30 dias" class="guarantee-img"
+                        loading="lazy" width="220" height="220" decoding="async">
+                </picture>
                 <div class="guarantee-text">
                     <h3>30 Dias de Garantia Incondicional</h3>
                     <p>Entra. Assiste. Aplica. Se em 30 dias você sentir que o Método C.E.O. não faz sentido pra você,

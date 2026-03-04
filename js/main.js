@@ -32,14 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ---- Scroll reveal with IntersectionObserver (no layout shifts) ----
-    const style = document.createElement('style');
-    style.textContent = `
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-  `;
-    document.head.appendChild(style);
-
+    // ---- Scroll reveal with IntersectionObserver ----
+    // Styles are defined in CSS (style.css) — no runtime injection needed
     const revealEls = document.querySelectorAll(
         '.benefit-item, .pillar-card, .module-card, .bonus-card, .audience-card, .faq-item, .stat-item'
     );
@@ -55,5 +49,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.12 });
 
     revealEls.forEach(el => observer.observe(el));
+
+    // ---- YouTube Facade — load iframe only on click ----
+    const ytFacade = document.querySelector('.yt-facade');
+    if (ytFacade) {
+        const videoId = ytFacade.dataset.videoId;
+        ytFacade.addEventListener('click', () => {
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            iframe.title = 'Método CEO — Guilherme Zampoli';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
+            ytFacade.innerHTML = '';
+            ytFacade.appendChild(iframe);
+        }, { once: true });
+    }
 
 });
