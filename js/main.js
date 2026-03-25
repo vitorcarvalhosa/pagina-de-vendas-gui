@@ -50,6 +50,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealEls.forEach(el => observer.observe(el));
 
+    // ---- Facebook Pixel: InitiateCheckout on CTA clicks ----
+    document.querySelectorAll('a[href*="pay.hotmart.com"]').forEach(link => {
+        link.addEventListener('click', () => {
+            if (typeof fbq === 'function') {
+                fbq('track', 'InitiateCheckout', {
+                    content_name: 'Método C.E.O.',
+                    value: 297.00,
+                    currency: 'BRL'
+                });
+            }
+        });
+    });
+
     // ---- YouTube Facade — load iframe only on click ----
     const ytFacade = document.querySelector('.yt-facade');
     if (ytFacade) {
