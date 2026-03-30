@@ -57,14 +57,13 @@
     }
     </script>
 
-    <!-- Preload LCP image -->
-    <link rel="preload" as="image" href="images/thumb_video.webp" type="image/webp" fetchpriority="high">
+    <!-- Preconnect YouTube thumbnails -->
+    <link rel="preconnect" href="https://i.ytimg.com">
 
     <!-- DNS prefetch para domínios externos -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://i.ytimg.com">
-    <link rel="dns-prefetch" href="https://connect.facebook.net">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
     <!-- Google Fonts: preconnect + async (não bloqueia render) -->
@@ -75,10 +74,11 @@
 
     <!-- CSS crítico inline — acima do fold (hero, botões, container, base) -->
     <style>
+      @font-face{font-family:'Inter Fallback';src:local('Arial');size-adjust:107%;ascent-override:90%;descent-override:22%;line-gap-override:0%}
       *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
       :root{--primary:#F97316;--primary-dark:#ea580c;--primary-glow:rgba(249,115,22,.35);--primary-glow-strong:rgba(249,115,22,.55);--bg:#0A0A0A;--bg-alt:#0f1520;--card:#111827;--text:#FFFFFF;--text-muted:#9CA3AF;--border:#1f2a3a;--border-bright:#374151;--radius-card:14px;--radius-btn:10px;--radius-pill:50px}
       html{scroll-behavior:smooth}
-      body{font-family:'Inter',system-ui,-apple-system,sans-serif;background-color:var(--bg);color:var(--text-muted);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+      body{font-family:'Inter','Inter Fallback',system-ui,-apple-system,sans-serif;background-color:var(--bg);color:var(--text-muted);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
       img{max-width:100%;height:auto;display:block}
       h1,h2,h3,h4{color:var(--text);font-weight:800;line-height:1.15;letter-spacing:-.02em}
       h1{font-size:clamp(1.8rem,5vw,3.2rem);margin-bottom:1.5rem}
@@ -103,9 +103,8 @@
       .benefit-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.25rem}
       .benefit-number{font-size:1.5rem;flex-shrink:0;line-height:1.4}
       .benefit-text{font-size:1rem;line-height:1.6;color:var(--text-muted)}
-      .video-wrapper{position:relative;width:100%;max-width:720px;margin:2rem auto;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--border-bright)}
+      .video-wrapper{position:relative;width:100%;margin:2rem auto;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--border-bright)}
       .yt-facade{position:absolute;inset:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
-      .yt-facade picture{position:absolute;inset:0;width:100%;height:100%;display:block}
       .yt-facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
       .yt-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:68px;height:48px;background:#FF0000;border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
       .yt-play-btn svg{width:24px;height:24px;fill:#fff}
@@ -154,12 +153,9 @@
             <div class="video-wrapper">
                 <div class="yt-facade" data-video-id="H1aouyYHv48" role="button"
                     aria-label="Assistir ao vídeo do Método C.E.O." tabindex="0">
-                    <picture>
-                        <source srcset="images/thumb_video.webp" type="image/webp">
-                        <img src="images/thumb_video.jpg"
-                            alt="Thumbnail do vídeo: Método CEO — Guilherme Zampoli" loading="eager" fetchpriority="high" width="1280" height="720"
-                            decoding="async">
-                    </picture>
+                    <img src="https://i.ytimg.com/vi/H1aouyYHv48/hqdefault.jpg"
+                        alt="Thumbnail do vídeo: Método CEO — Guilherme Zampoli" loading="eager" fetchpriority="high" width="480" height="360"
+                        decoding="async">
                     <div class="yt-play-btn" aria-hidden="true">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8 5v14l11-7z" />
@@ -918,7 +914,10 @@
         </div>
     </footer>
 
-    <script src="js/main.js" defer></script>
+    <script>
+    document.addEventListener("DOMContentLoaded",()=>{const f=document.querySelectorAll(".faq-item");f.forEach(i=>{i.querySelector(".faq-q").addEventListener("click",()=>{const o=i.classList.contains("open");f.forEach(fi=>{fi.classList.remove("open");fi.querySelector(".faq-q").setAttribute("aria-expanded","false")});if(!o){i.classList.add("open");i.querySelector(".faq-q").setAttribute("aria-expanded","true")}})});document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(e){const t=document.querySelector(this.getAttribute("href"));if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"})}})});const r=document.querySelectorAll(".benefit-item,.pillar-card,.module-card,.bonus-card,.audience-card,.faq-item,.stat-item");r.forEach(el=>el.classList.add("reveal"));const o=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");o.unobserve(e.target)}})},{threshold:.12});r.forEach(el=>o.observe(el));const y=document.querySelector(".yt-facade");if(y){const v=y.dataset.videoId;y.addEventListener("click",()=>{const i=document.createElement("iframe");i.src="https://www.youtube.com/embed/"+v+"?autoplay=1&rel=0";i.title="Método CEO — Guilherme Zampoli";i.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";i.allowFullscreen=true;i.style.cssText="position:absolute;top:0;left:0;width:100%;height:100%;border:none";while(y.firstChild)y.removeChild(y.firstChild);y.appendChild(i)},{once:true})}});
+    window.addEventListener("load",function(){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f)})(window,document,"script","dataLayer","GTM-5DTH882N")});
+    </script>
 </body>
 
 </html>

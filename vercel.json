@@ -29,11 +29,7 @@
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        {
-          "key": "Link",
-          "value": "</images/thumb_video.webp>; rel=preload; as=image; type=\"image/webp\""
-        }
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
       ]
     }
   ]
