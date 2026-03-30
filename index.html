@@ -57,13 +57,18 @@
     }
     </script>
 
-    <!-- DNS prefetch para domínios externos -->
+    <!-- DNS prefetch / preconnect para domínios externos -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://i.ytimg.com">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
 
-    <!-- Fontes self-hosted — sem roundtrip externo, sem render-blocking -->
+    <!-- Fontes self-hosted — preload ambas para evitar FOUT -->
     <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="fonts/fonts.css">
+    <link rel="preload" href="fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+      @font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+      @font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/inter-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+    </style>
 
     <!-- CSS crítico inline — acima do fold (hero, botões, container, base) -->
     <style>
@@ -108,6 +113,7 @@
 </head>
 
 <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DTH882N" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- ===========================
        SECTION 1 — HERO
@@ -144,6 +150,8 @@
                 <div class="yt-facade" data-video-id="H1aouyYHv48" role="button"
                     aria-label="Assistir ao vídeo do Método C.E.O." tabindex="0">
                     <img src="images/thumb_video.webp"
+                        srcset="images/thumb_video_640.webp 640w, images/thumb_video.webp 1280w"
+                        sizes="(max-width:640px) 640px, 1280px"
                         alt="Thumbnail do vídeo: Método CEO — Guilherme Zampoli" loading="eager" fetchpriority="high" width="1280" height="720"
                         decoding="async">
                     <div class="yt-play-btn" aria-hidden="true">
@@ -906,7 +914,7 @@
 
     <script>
     document.addEventListener("DOMContentLoaded",()=>{const f=document.querySelectorAll(".faq-item");f.forEach(i=>{i.querySelector(".faq-q").addEventListener("click",()=>{const o=i.classList.contains("open");f.forEach(fi=>{fi.classList.remove("open");fi.querySelector(".faq-q").setAttribute("aria-expanded","false")});if(!o){i.classList.add("open");i.querySelector(".faq-q").setAttribute("aria-expanded","true")}})});document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(e){const t=document.querySelector(this.getAttribute("href"));if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"})}})});const r=document.querySelectorAll(".benefit-item,.pillar-card,.module-card,.bonus-card,.audience-card,.faq-item,.stat-item");r.forEach(el=>el.classList.add("reveal"));const o=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");o.unobserve(e.target)}})},{threshold:.12});r.forEach(el=>o.observe(el));const y=document.querySelector(".yt-facade");if(y){const v=y.dataset.videoId;y.addEventListener("click",()=>{const i=document.createElement("iframe");i.src="https://www.youtube.com/embed/"+v+"?autoplay=1&rel=0";i.title="Método CEO — Guilherme Zampoli";i.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";i.allowFullscreen=true;i.style.cssText="position:absolute;top:0;left:0;width:100%;height:100%;border:none";while(y.firstChild)y.removeChild(y.firstChild);y.appendChild(i)},{once:true})}});
-    window.addEventListener("load",function(){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f)})(window,document,"script","dataLayer","GTM-5DTH882N")});
+    (function loadGTM(){function inject(){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f)})(window,document,"script","dataLayer","GTM-5DTH882N")}if("requestIdleCallback"in window){requestIdleCallback(inject,{timeout:4000})}else{window.addEventListener("load",inject)}})();
     </script>
 </body>
 
