@@ -57,6 +57,9 @@
     }
     </script>
 
+    <!-- Preload LCP image -->
+    <link rel="preload" as="image" href="images/thumb_video.webp" type="image/webp" fetchpriority="high">
+
     <!-- DNS prefetch para domínios externos -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -153,7 +156,7 @@
                     aria-label="Assistir ao vídeo do Método C.E.O." tabindex="0">
                     <picture>
                         <source srcset="images/thumb_video.webp" type="image/webp">
-                        <img src="images/thumb_video.png"
+                        <img src="images/thumb_video.jpg"
                             alt="Thumbnail do vídeo: Método CEO — Guilherme Zampoli" loading="eager" fetchpriority="high" width="1280" height="720"
                             decoding="async">
                     </picture>
