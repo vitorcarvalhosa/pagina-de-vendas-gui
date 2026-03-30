@@ -74,9 +74,46 @@ document.addEventListener("DOMContentLoaded", () => {
             iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
             iframe.allowFullscreen = true;
             iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:none;';
-            ytFacade.innerHTML = '';
+            // Remove thumbnail e adiciona iframe
+            while (ytFacade.firstChild) ytFacade.removeChild(ytFacade.firstChild);
             ytFacade.appendChild(iframe);
         }, { once: true });
     }
 
+});
+
+// ---- GTM e Facebook Pixel — carregados após window load (não bloqueiam LCP) ----
+window.addEventListener('load', function() {
+    // Google Tag Manager
+    (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),
+            dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5DTH882N');
+
+    // Facebook Pixel
+    (function(f,b,e,v,n,t,s){
+        if(f.fbq)return;
+        n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];
+        t=b.createElement(e);t.async=!0;
+        t.src=v;
+        s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s);
+    })(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1203099945066371');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+        content_name: 'Método C.E.O. - Landing Page',
+        content_category: 'Sales Page',
+        value: 297.00,
+        currency: 'BRL'
+    });
 });

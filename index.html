@@ -2,13 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5DTH882N');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0A0A0A">
@@ -63,53 +56,64 @@
       "inLanguage": "pt-BR"
     }
     </script>
-    <!-- Facebook Pixel -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1203099945066371');
-        fbq('track', 'PageView');
-        fbq('track', 'ViewContent', {
-            content_name: 'Método C.E.O. - Landing Page',
-            content_category: 'Sales Page',
-            value: 297.00,
-            currency: 'BRL'
-        });
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=1203099945066371&ev=PageView&noscript=1"/></noscript>
-    <!-- Preload critical CSS -->
-    <link rel="preload" href="css/style.css" as="style">
-    <!-- DNS prefetch for external domains -->
+
+    <!-- DNS prefetch para domínios externos -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link rel="dns-prefetch" href="https://www.youtube.com">
     <link rel="dns-prefetch" href="https://i.ytimg.com">
-    <link rel="dns-prefetch" href="https://wa.me">
-    <!-- Google Fonts preconnect + async load -->
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+    <!-- Google Fonts: preconnect + async (não bloqueia render) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print"
-        onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
-    </noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"></noscript>
+
+    <!-- CSS crítico inline — acima do fold (hero, botões, container, base) -->
+    <style>
+      *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+      :root{--primary:#F97316;--primary-dark:#ea580c;--primary-glow:rgba(249,115,22,.35);--primary-glow-strong:rgba(249,115,22,.55);--bg:#0A0A0A;--bg-alt:#0f1520;--card:#111827;--text:#FFFFFF;--text-muted:#9CA3AF;--border:#1f2a3a;--border-bright:#374151;--radius-card:14px;--radius-btn:10px;--radius-pill:50px}
+      html{scroll-behavior:smooth}
+      body{font-family:'Inter',system-ui,-apple-system,sans-serif;background-color:var(--bg);color:var(--text-muted);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+      img{max-width:100%;height:auto;display:block}
+      h1,h2,h3,h4{color:var(--text);font-weight:800;line-height:1.15;letter-spacing:-.02em}
+      h1{font-size:clamp(1.8rem,5vw,3.2rem);margin-bottom:1.5rem}
+      h2{font-size:clamp(1.5rem,4vw,2.5rem);margin-bottom:1rem}
+      h3{font-size:clamp(1.1rem,3vw,1.4rem);margin-bottom:.75rem}
+      p{margin-bottom:1rem}p:last-child{margin-bottom:0}
+      a{color:var(--primary);text-decoration:none}
+      .container{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
+      .section{padding:80px 0}
+      .hero{padding:80px 0 60px;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(249,115,22,.12) 0%,transparent 70%),var(--bg)}
+      .pre-headline{display:inline-block;font-size:.85rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem;opacity:.9}
+      .highlight{color:var(--primary)}
+      .sub-text{font-size:1.05rem;color:var(--text);margin-bottom:1.25rem;font-weight:500}
+      .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#F97316,#ea580c);color:#fff;font-family:inherit;font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;text-decoration:none;padding:18px 36px;border-radius:var(--radius-btn);border:none;cursor:pointer;box-shadow:0 0 25px var(--primary-glow),0 4px 16px rgba(0,0,0,.4);transition:transform .25s ease,box-shadow .25s ease;width:100%;text-align:center;position:relative;overflow:hidden}
+      .btn:hover{transform:translateY(-3px);box-shadow:0 0 40px var(--primary-glow-strong),0 8px 24px rgba(0,0,0,.5)}
+      .btn-lg{padding:22px 44px;font-size:1.1rem}
+      .btn-center{display:flex;justify-content:center;margin-top:2.5rem}
+      @media(min-width:640px){.btn{width:auto;min-width:320px}}
+      .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);color:var(--primary);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:6px 14px;border-radius:var(--radius-pill);margin-bottom:1.25rem}
+      .section-heading{text-align:center;margin-bottom:3rem}
+      .benefits-list{list-style:none;margin:1.5rem 0 2rem}
+      .benefit-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.25rem}
+      .benefit-number{font-size:1.5rem;flex-shrink:0;line-height:1.4}
+      .benefit-text{font-size:1rem;line-height:1.6;color:var(--text-muted)}
+      .video-wrapper{position:relative;width:100%;max-width:720px;margin:2rem auto;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--border-bright)}
+      .yt-facade{position:absolute;inset:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+      .yt-facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+      .yt-play-btn{position:relative;z-index:2;width:68px;height:48px;background:rgba(249,115,22,.92);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+      .yt-play-btn svg{width:24px;height:24px;fill:#fff}
+      .yt-facade:hover .yt-play-btn{background:var(--primary);transform:scale(1.08)}
+    </style>
+
+    <!-- CSS restante (não-crítico) — carrega sem bloquear render -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DTH882N"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <!-- ===========================
        SECTION 1 — HERO
@@ -145,9 +149,12 @@
             <div class="video-wrapper">
                 <div class="yt-facade" data-video-id="H1aouyYHv48" role="button"
                     aria-label="Assistir ao vídeo do Método C.E.O." tabindex="0">
-                    <img src="https://i.ytimg.com/vi/H1aouyYHv48/hqdefault.jpg"
-                        alt="Thumbnail do vídeo: Método CEO — Guilherme Zampoli" loading="lazy" width="640" height="360"
-                        decoding="async">
+                    <picture>
+                        <source srcset="images/thumb_video.webp" type="image/webp">
+                        <img src="images/thumb_video.png"
+                            alt="Thumbnail do vídeo: Método CEO — Guilherme Zampoli" loading="eager" fetchpriority="high" width="1280" height="720"
+                            decoding="async">
+                    </picture>
                     <div class="yt-play-btn" aria-hidden="true">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8 5v14l11-7z" />
@@ -545,9 +552,12 @@
 
             <div class="author-split">
                 <div class="author-img-wrap">
-                    <img src="images/mockup_author.jpg" alt="Guilherme Zampoli — Criador do Método C.E.O."
-                        loading="lazy" decoding="async"
-                        style="width:100%; max-width:360px; height:auto; border-radius:12px; display:block;">
+                    <picture>
+                        <source srcset="images/mockup_author.webp" type="image/webp">
+                        <img src="images/mockup_author.jpg" alt="Guilherme Zampoli — Criador do Método C.E.O."
+                            loading="lazy" decoding="async" width="460" height="1024"
+                            style="width:100%; max-width:360px; height:auto; border-radius:12px; display:block;">
+                    </picture>
                 </div>
                 <div class="author-text">
                     <p>Meu nome é <strong style="color:#fff">Guilherme Zampoli</strong>. E antes de ensinar prospecção,
@@ -619,9 +629,12 @@
                     </div>
                 </div>
                 <div class="results-img-wrap">
-                    <img src="images/resultado_dashboard.jpg"
-                        alt="Dashboard real da Zanca Suprimentos: R$3,19 milhões faturados em 12 meses"
-                        class="results-img" loading="lazy" decoding="async">
+                    <picture>
+                        <source srcset="images/resultado_dashboard.webp" type="image/webp">
+                        <img src="images/resultado_dashboard.jpg"
+                            alt="Dashboard real da Zanca Suprimentos: R$3,19 milhões faturados em 12 meses"
+                            class="results-img" loading="lazy" decoding="async" width="1024" height="605">
+                    </picture>
                     <div class="results-img-caption">📊 Dashboard real — atualizado em 11/02 às 12:42</div>
                 </div>
             </div>
@@ -649,20 +662,29 @@
             <div class="social-proof-grid">
                 <div class="proof-col-stacked">
                     <div class="proof-card">
-                        <img src="images/prova_social_1.jpg"
-                            alt="Decisor de empresa pedindo e-mail para receber apresentação comercial"
-                            loading="lazy" decoding="async">
+                        <picture>
+                            <source srcset="images/prova_social_1.webp" type="image/webp">
+                            <img src="images/prova_social_1.jpg"
+                                alt="Decisor de empresa pedindo e-mail para receber apresentação comercial"
+                                loading="lazy" decoding="async" width="601" height="139">
+                        </picture>
                     </div>
                     <div class="proof-card">
-                        <img src="images/prova_social_2.jpg"
-                            alt="Comprador de empresa solicitando envio de portfólio por e-mail"
-                            loading="lazy" decoding="async">
+                        <picture>
+                            <source srcset="images/prova_social_2.webp" type="image/webp">
+                            <img src="images/prova_social_2.jpg"
+                                alt="Comprador de empresa solicitando envio de portfólio por e-mail"
+                                loading="lazy" decoding="async" width="591" height="168">
+                        </picture>
                     </div>
                 </div>
                 <div class="proof-card proof-card-tall">
-                    <img src="images/prova_social_3.jpg"
-                        alt="Decisor pedindo portfólio e dados para cotação"
-                        loading="lazy" decoding="async">
+                    <picture>
+                        <source srcset="images/prova_social_3.webp" type="image/webp">
+                        <img src="images/prova_social_3.jpg"
+                            alt="Decisor pedindo portfólio e dados para cotação"
+                            loading="lazy" decoding="async" width="808" height="437">
+                    </picture>
                 </div>
             </div>
 
